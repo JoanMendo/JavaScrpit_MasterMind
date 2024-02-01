@@ -1,5 +1,5 @@
 //Declaración de constantes.
-const MAX_INTENTOS = 8;
+const MAX_INTENTOS = 6;
 const MAX_COMBI_COLORES = 4;
 const COLORS = ['white', 'blue', 'green', 'violet', 'yellow', 'red', 'orange', 'cyan'];
 const GREY = "grey";
@@ -23,21 +23,21 @@ const ROW_RESULT = `
        <div class="w25">
            <div class="cel flex"></div>
        </div>
-    </div>==========================================================================
+    </div>
     <div class="rowCercleResult w25 flex wrap center">
-       <div class="w40 h40">
+       <div class="w25 h25">
             <div class="cercleResult flex"></div>
        </div>
-       <div class="w40 h40">
+       <div class="w25 h25">
            <div class="cercleResult flex"></div>
        </div>
-       <div class="w40 h40">
+       <div class="w25 h40">
            <div class="cercleResult flex"></div>
        </div>
-       <div class="w40 h40">
+       <div class="w25 h40">
            <div class="cercleResult flex"></div>
        </div>
-    </div>
+    </div>=================================================================================
 </div>`; 
 
 
