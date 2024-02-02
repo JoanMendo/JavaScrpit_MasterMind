@@ -44,6 +44,8 @@ const ROW_RESULT = `
 //Declaración de variables globales.
 let imputColors = document.getElementsByClassName("cel flex");
 let cercleResult = document.getElementsByClassName("cercleResult flex");
+let button = document.getElementById("check");
+let colors = document.getElementsByClassName("w100 cel flex");
 const master = [];
 const userCombi = [];
 var intento = 0;
@@ -76,7 +78,7 @@ Informamos al usuario del resultado y del número de intentos que lleva*/
 function Comprobar() {
     let firstTry = document.getElementsByClassName("w100 info");
     if (currentColor < MAX_COMBI_COLORES) {
-        firstTry[0].textContent = "Debes introducir 4 colores";
+        firstTry[0].textContent = "Has introduir 4 colors";
         firstTry[0].style.display = "block";
     }
     else
@@ -103,16 +105,24 @@ function Comprobar() {
         }
         currentTry++;
         if (master.toString() == userCombi.toString()) {
-            alert("Has ganado");
-            window.location.reload();
+            for (let i = 0 ; i < 4 ; i++) {
+                imputColors[i].style.backgroundColor = master[i];
+            }
+            firstTry[0].textContent = "Felicitats, has guanyat!";
+            firstTry[0].style.display = "block";
+            endGame();
+            
+            for (let i = 0 ; i < 8 ; i++) {
+                colors[i].disabled = true;
+            }
         }
-        if (currentTry == MAX_INTENTOS) {
-            alert("Has perdut");
+        else if (currentTry == MAX_INTENTOS) {
             for (let i = 0 ; i < 4 ; i++) {
                 imputColors[i].style.backgroundColor = master[i];
             }
             firstTry[0].textContent = "Has perdut, aquesta era la combinació correcta";
             firstTry[0].style.display = "block";
+            endGame();
 
         }
     }
@@ -128,9 +138,16 @@ function añadeColor(color) {
         
         imputColors[currentColor].style.backgroundColor = color;
         userCombi[currentColor] = color;
-        
-    currentColor++;
+         currentColor++;
 
 }
 }
+function endGame() {
 
+            button.style.backgroundColor = "green";
+            button.textContent = "Tornar a Jugar";
+            button.setAttribute("onclick", "location.reload()");
+            for (let i = 0; i < 8 ; i++) {
+                colors[i].removeAttribute("onclick");
+            }
+}
