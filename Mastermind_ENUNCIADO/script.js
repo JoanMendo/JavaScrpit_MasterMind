@@ -1,5 +1,5 @@
 //Declaración de constantes.
-const MAX_INTENTOS = 6;
+const MAX_INTENTOS = 3;
 const MAX_COMBI_COLORES = 4;
 const COLORS = ['white', 'blue', 'green', 'violet', 'yellow', 'red', 'orange', 'cyan'];
 const GREY = "grey";
@@ -105,22 +105,14 @@ function Comprobar() {
         }
         currentTry++;
         if (master.toString() == userCombi.toString()) {
-            for (let i = 0 ; i < 4 ; i++) {
-                imputColors[i].style.backgroundColor = master[i];
-            }
+           
             firstTry[0].textContent = "Felicitats, has guanyat!";
             firstTry[0].style.display = "block";
             endGame();
-            
-            for (let i = 0 ; i < 8 ; i++) {
-                colors[i].disabled = true;
-            }
         }
         else if (currentTry == MAX_INTENTOS) {
-            for (let i = 0 ; i < 4 ; i++) {
-                imputColors[i].style.backgroundColor = master[i];
-            }
-            firstTry[0].textContent = "Has perdut, aquesta era la combinació correcta";
+            
+            firstTry[0].textContent = "Has perdut, aquesta era la combinació correcta.";
             firstTry[0].style.display = "block";
             endGame();
 
@@ -135,15 +127,15 @@ function Comprobar() {
 /** Procedimiento que se ejecuta cada vez que el usuario selecciona un color, hasta el número máximo de colores permitidos en la combinación. */
 function añadeColor(color) {
     if (currentColor < MAX_COMBI_COLORES) {
-        
         imputColors[currentColor].style.backgroundColor = color;
         userCombi[currentColor] = color;
-         currentColor++;
-
+        currentColor++;
 }
 }
 function endGame() {
-
+            for (let i = 0 ; i < 4 ; i++) {
+                imputColors[i].style.backgroundColor = master[i];
+            }
             button.style.backgroundColor = "green";
             button.textContent = "Tornar a Jugar";
             button.setAttribute("onclick", "location.reload()");
